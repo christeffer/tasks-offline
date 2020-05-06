@@ -27,8 +27,8 @@ export default class AddTask extends Component {
       desc: this.state.desc,
       date: this.state.date,
     };
-    // Somente executa se existir o métodos
-    // como se fosse um if com a execução dentro
+
+    // if exists props on save ..... exec onSave of newTask
     this.props.onSave && this.props.onSave(newTask);
     this.setState({...initialState});
   };
@@ -45,8 +45,7 @@ export default class AddTask extends Component {
     const dateString = moment(this.state.date).format(
       'dddd, D [de] MMMM [de] YYYY'
     );
-    // Validação condicional ao final verifica se deve aparecer e caso sim adiciona o conteudo previo do datePicker
-    // Isso se dá pois ainda não finalizou a sobreposição (dentro do = () )
+    // Check if should be visible, if yes add a Component inside of view in datepicker (Everything inside a "()" )
     if (Platform.OS === 'android') {
       datePicker = (
         <View>
